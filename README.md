@@ -2,7 +2,7 @@
 
 <br>
 
-This project is considered as an extension of the Project: Data Warehouse, the 3rd project of the Data Engineering Nanodegree program. It shares the same purpose and analytical goals in context of the company Sparkify, as well as the design of database schemas, and the ETL pipelines. These two projects are considered to be **functionally equivalent** implementations of the same ETL task, but with only one difference : in this project, the original Python program codes are modified to make them workable in [Apache Airflow](https://airflow.apache.org/), a platform created to focus on scheduling and monitoring workflows, especially data pipelines.
+This project is considered as an extension of the Project: Data Warehouse, the 3rd project of the Data Engineering Nanodegree program. It shares the same purpose and analytical goals in context of the company Sparkify, as well as the design of database schemas, and even the ETL pipelines. These two projects are considered to be **functionally equivalent** implementations of the same ETL task, but with only one difference : in this project, the original Python program codes are modified to make them workable in [Apache Airflow](https://airflow.apache.org/), a platform created to focus on scheduling and monitoring workflows, especially data pipelines.
 
 The way we create the data pipelines in the 3rd project can do the work we need, but it may not suitable for the production use in the long run, because
 
@@ -20,7 +20,7 @@ Data pipelines are data processing steps carried out in specific order, and this
 
 That's prettier than most of the old-school style task scheduling and monitoring tools, and it's interactive, too.
 
-To get Airflow up to work, we will have to write program codes to represent a DAG, its related nodes, and edges in Python. As shown in the file **airflow/dags/udac_example_dag.py**, defining a DAG and edges are straightforward, but defining tasks may be a little more complex than that. To properly define a task in Airflow, we will need to use an Airflow [operator](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html) to define a task and supply it with necessary arguments. And if the built-in operators are not sufficient to represent the program logic, we may have to create [our own operators](https://airflow.apache.org/docs/apache-airflow/stable/howto/custom-operator.html) from scratch ([here](https://docs.astronomer.io/learn/airflow-importing-custom-hooks-operators) and [here](https://blog.devgenius.io/writing-custom-operators-and-hooks-for-mwaa-c8a1b6052553) are some examples).
+To get Airflow up to work, we will have to write program codes to represent a DAG, its related nodes, and edges in Python. As shown in the file [**airflow/dags/udac_example_dag.py**](https://github.com/ZXKUQYB/nd027-project5/blob/main/airflow/dags/udac_example_dag.py), defining a DAG and edges are straightforward, but defining tasks may be a little more complex than that. To properly define a task in Airflow, we will need to use an Airflow [operator](https://airflow.apache.org/docs/apache-airflow/stable/core-concepts/operators.html) to define a task and supply it with necessary arguments. And if the built-in operators are not sufficient to represent the program logic, we may have to create [our own operators](https://airflow.apache.org/docs/apache-airflow/stable/howto/custom-operator.html) from scratch ([here](https://docs.astronomer.io/learn/airflow-importing-custom-hooks-operators) and [here](https://blog.devgenius.io/writing-custom-operators-and-hooks-for-mwaa-c8a1b6052553) are some examples).
 
 >Note : as stated in a note of the Airflow online docs, the term **Tasks** and **Operators** are usually treated as the same "thing", but we should still be aware of the differences between them.
 [![](Task_Operator.jpg)](Task_Operator.jpg)
@@ -32,7 +32,7 @@ In this project we will create four custom operators to divide the original mono
 - LoadDimensionOperator : Load and transform data into dimension table
 - DataQualityOperator : Run quality checks on the loaded data
 
-These custom operators can be found in the **airflow/plugins/operators** directory.
+These custom operators can be found in the [**airflow/plugins/operators**](https://github.com/ZXKUQYB/nd027-project5/tree/main/airflow/plugins/operators) directory.
 
 <br>
 
